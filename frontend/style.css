@@ -1,0 +1,268 @@
+:root {
+    --primary-color: #3498db;
+    --primary-hover-color: #2980b9;
+    --secondary-color: #e0e0e0;
+    --secondary-hover-color: #d0d0d0;
+    --success-color: #2ecc71;
+    --success-hover-color: #27ae60;
+    --warning-color: #f39c12;
+    --warning-hover-color: #e67e22;
+    --danger-color: #e74c3c;
+    --danger-hover-color: #c0392b;
+    --text-color: #2c3e50;
+    --background-color: #f9f9f9;
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --message-bg-user: #e1ffc7;
+    --message-bg-bot: #f1f0f0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+}
+
+.header {
+    width: 100%;
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.chat-tabs {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.chat-tab {
+    background-color: var(--secondary-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    margin: 0 2px;
+    transition: background-color 0.3s ease;
+}
+
+.chat-tab:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+.chat-tab.active {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+}
+
+.new-tab-button {
+    background-color: var(--success-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.new-tab-button:hover {
+    background-color: var(--success-hover-color);
+}
+
+.chat-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px; /* Peut être ajusté */
+    flex-wrap: nowrap; /* Empêche le retour à la ligne des fenêtres de chat */
+    overflow-x: auto; /* Permet le défilement horizontal si plusieurs fenêtres */
+    min-height: 600px; /* Hauteur minimale pour le conteneur des fenêtres */
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.chat-window {
+    flex: 0 0 100%; /* Chaque fenêtre prend 100% de la largeur du conteneur */
+    max-width: 600px; /* Largeur maximale pour chaque fenêtre de chat */
+    margin: 20px auto; /* Centre chaque fenêtre individuellement dans le conteneur */
+    padding: 20px;
+    display: none; /* Masqué par défaut, JavaScript gérera l'affichage */
+    flex-direction: column;
+    justify-content: space-between; /* Pousse l'input en bas */
+}
+
+.chat-window.active {
+    display: flex; /* Afficher la fenêtre active */
+}
+
+.chat-window h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 0;
+}
+
+.chat-box {
+    border: 1px solid var(--border-color);
+    height: 400px; /* Ajusté pour laisser de la place à l'input et feedback */
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: var(--background-color);
+    border-radius: 5px;
+    flex-grow: 1; /* Prend l'espace disponible */
+}
+
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.message.user {
+    background-color: var(--message-bg-user);
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+}
+
+.message.bot {
+    background-color: var(--message-bg-bot);
+    align-self: flex-start;
+    margin-right: auto;
+    text-align: left;
+}
+
+.input-area {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px; /* Espace au-dessus de la zone de saisie */
+}
+
+.input-area input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.feedback-section {
+    margin-top: 15px;
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid var(--border-color);
+}
+
+.feedback-button {
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-button:hover {
+    background-color: var(--secondary-hover-color);
+}
+
+/* Styles pour la page welcome.html */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    background-color: var(--background-color);
+    padding: 20px;
+}
+
+.welcome-container h1 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.welcome-container p {
+    font-size: 1.2em;
+    color: var(--text-color);
+    margin-bottom: 30px;
+}
+
+.start-chat {
+    display: inline-block;
+    background-color: var(--success-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.start-chat:hover {
+    background-color: var(--success-hover-color);
+    transform: translateY(-2px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .chat-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+    .chat-window {
+        padding: 15px;
+    }
+    .input-area {
+        flex-direction: column;
+        gap: 5px;
+    }
+    .send-button {
+        width: 100%;
+    }
+.similarity-score {
+    font-size: 0.8em;
+    color: #777; /* Couleur plus discrète */
+    margin-top: 5px; /* Un peu d'espace au-dessus */
+    display: block; /* S'assure qu'il est sur sa propre ligne */
+    text-align: left; /* Aligner à gauche pour les réponses du bot */
+}
+}
